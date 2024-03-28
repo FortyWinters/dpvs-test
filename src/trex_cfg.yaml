@@ -1,9 +1,9 @@
-- port_limit      : 2
-  version         : 2
-#List of interfaces. Change to suit your setup. Use ./dpdk_setup_ports.py -s to see available options
-  interfaces    : ["0000:02:02.0","dummy"]
-  port_info       :  # Port IPs. Change to suit your needs. In case of loopback, you can leave as is.
-          - ip         : 10.0.0.48
-            default_gw : 10.0.0.100
-          - ip         : 192.168.100.2
-            default_gw : 192.168.100.200
+- port_limit: 2
+  version: 2
+  #List of interfaces. Change to suit your setup. Use ./dpdk_setup_ports.py -s to see available options
+  interfaces: ["0000:02:02.0", "dummy"]
+  port_info: # Port IPs. Change to suit your needs. In case of loopback, you can leave as is.
+    - ip: 10.0.0.48
+      default_gw: 10.0.0.100
+    - ip: 192.168.100.2
+      default_gw: 192.168.100.200

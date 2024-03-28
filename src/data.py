@@ -1,12 +1,14 @@
 import pandas as pd
 import math
 
+
 def getArr(fileName):
-    data = pd.read_csv(fileName)  
+    data = pd.read_csv(fileName)
     arr = []
     for i in range(21):
         arr.append(data.columns[i])
     return arr
+
 
 def getData(data, arr, data_all):
     point = []
@@ -16,28 +18,31 @@ def getData(data, arr, data_all):
                 point.append(0)
             else:
                 point.append(data[arr[j]][i])
-            
-        pkt_lost = data['OUT-MBits Transmitted/sec'][i]/data['IN-MBits Received/sec'][i]
+
+        pkt_lost = (
+            data["OUT-MBits Transmitted/sec"][i] / data["IN-MBits Received/sec"][i]
+        )
         point.append(pkt_lost)
-        point.append(data['Lable'][i])
+        point.append(data["Lable"][i])
         data_all.append(point)
         point = []
-        pkt_lost = 0  
+        pkt_lost = 0
     return data_all
+
 
 def main():
     data_all = []
-    data_1 = pd.read_csv('1.csv')
-    data_2 = pd.read_csv('2.csv')
-    data_3 = pd.read_csv('3.csv')
-    data_4 = pd.read_csv('4.csv')
-    data_5 = pd.read_csv('5.csv')
-    data_6 = pd.read_csv('6.csv')
-    data_7 = pd.read_csv('7.csv')
-    data_8 = pd.read_csv('8.csv')
-    data_9 = pd.read_csv('9.csv')
-    data_10 = pd.read_csv('10.csv')
-    data_11 = pd.read_csv('11.csv')
+    data_1 = pd.read_csv("1.csv")
+    data_2 = pd.read_csv("2.csv")
+    data_3 = pd.read_csv("3.csv")
+    data_4 = pd.read_csv("4.csv")
+    data_5 = pd.read_csv("5.csv")
+    data_6 = pd.read_csv("6.csv")
+    data_7 = pd.read_csv("7.csv")
+    data_8 = pd.read_csv("8.csv")
+    data_9 = pd.read_csv("9.csv")
+    data_10 = pd.read_csv("10.csv")
+    data_11 = pd.read_csv("11.csv")
     # data_12 = pd.read_csv('12.csv')
     # data_13 = pd.read_csv('13.csv')
     # data_14 = pd.read_csv('14.csv')
@@ -48,9 +53,7 @@ def main():
     # data_19 = pd.read_csv('19.csv')
     # data_20 = pd.read_csv('20.csv')
 
-
-
-    arr = getArr('1.csv')
+    arr = getArr("1.csv")
     data1 = getData(data_1, arr, data_all)
     data2 = getData(data_2, arr, data_all)
     data3 = getData(data_3, arr, data_all)
@@ -74,18 +77,30 @@ def main():
 
     data_csv = pd.DataFrame(data11)
     data_csv.columns = [
-                        '% CPU Latency', '% Demand', 
-                        '% Idle', '% Overlap', 
-                        '% Ready', '% Run', 
-                        '% Used', '% Wait', 
-                        'Power Usage Watts', 'Switches/sec', 
-                        'Timers/sec', 'Wakeups/sec', 
-                        'IN-MBits Received/sec', 'OUT-MBits Transmitted/sec', 
-                        'Commands/sec', 'Reads/sec', 
-                        'Writes/sec', 'Mem total/KB', 
-                        'Mem used/KB', 'OUT/IN',
-                        'Lable']
-    data_csv.to_csv('data.csv',index=False)
-       
-if __name__ == '__main__':
+        "% CPU Latency",
+        "% Demand",
+        "% Idle",
+        "% Overlap",
+        "% Ready",
+        "% Run",
+        "% Used",
+        "% Wait",
+        "Power Usage Watts",
+        "Switches/sec",
+        "Timers/sec",
+        "Wakeups/sec",
+        "IN-MBits Received/sec",
+        "OUT-MBits Transmitted/sec",
+        "Commands/sec",
+        "Reads/sec",
+        "Writes/sec",
+        "Mem total/KB",
+        "Mem used/KB",
+        "OUT/IN",
+        "Lable",
+    ]
+    data_csv.to_csv("data.csv", index=False)
+
+
+if __name__ == "__main__":
     main()
